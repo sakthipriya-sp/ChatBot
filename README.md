@@ -1,94 +1,61 @@
-# 📖 Java Web Scraper
+# Spring Boot Chatbot
 
-## 📌 Overview
-The **Java Web Scraper** is a lightweight tool that searches for relevant documentation across multiple sources. It utilizes **JSoup** for web scraping and provides a **fallback Google search link** if no direct matches are found.
+This is a simple chatbot built using **Spring Boot** and **Thymeleaf**, which can fetch documentation-based answers using a web scraper.
 
-## ✨ Features
-- ✅ Scrapes documentation from multiple sources
-- ✅ Uses **JSoup** for HTML parsing
-- ✅ Provides a **fallback Google search** if direct results aren’t found
-- ✅ Easily extendable to support more sites
+## Features
+- Accepts user queries via a web interface.
+- Searches for relevant answers in the provided documentation sources.
+- Displays responses dynamically without refreshing the page.
 
----
+## Technologies Used
+- **Spring Boot** (Backend)
+- **Thymeleaf** (Frontend)
+- **Jsoup** (Web Scraping)
+- **HTML, CSS, JavaScript** (For UI)
 
-## 🛠️ Installation & Setup
+## Prerequisites
+- Java 17+
+- Maven
+- Spring Boot
+- An IDE like IntelliJ IDEA or VS Code
 
-### **1️⃣ Prerequisites**
-- Java 8+ installed
-- Maven installed
+## Setup and Installation
 
-### **2️⃣ Clone the Repository**
-```bash
-git clone https://github.com/yourusername/java-web-scraper.git
-cd java-web-scraper
-```
+1. **Clone the Repository**
+   ```sh
+   git clone https://github.com/yourusername/spring-boot-chatbot.git
+   cd spring-boot-chatbot
+Build and Run
 
-### **3️⃣ Add Dependencies**
-Ensure the following dependency is in `pom.xml`:
-```xml
-<dependency>
-    <groupId>org.jsoup</groupId>
-    <artifactId>jsoup</artifactId>
-    <version>1.15.3</version>
-</dependency>
-```
+sh
+Copy
+Edit
+mvn spring-boot:run
+Access the Chatbot Open your browser and go to:
 
-### **4️⃣ Build & Run**
-Compile and execute the scraper:
-```bash
-mvn clean install
-java -jar target/webscraper.jar
-```
+arduino
+Copy
+Edit
+http://localhost:8080
+API Endpoints
+Method	Endpoint	Description
+GET	/	Loads the chatbot UI
+POST	/ask	Sends a user query and returns a chatbot response
+Example Usage
+User: What are Zeotap’s identity resolution capabilities?
+Chatbot: Found relevant info at: https://docs.zeotap.com/home/en-us/
+Known Issues
+Some documentation sites may block automated scraping (e.g., returning 403 Forbidden).
+A more advanced approach, such as using official APIs, may be needed for reliable data retrieval.
+Future Enhancements
+Implement an API-based documentation fetcher.
+Improve the UI with a modern frontend framework like React or Angular.
+Support multi-language responses.
+License
+This project is licensed under the MIT License.
 
----
+Contact
+For any issues, feel free to reach out!
 
-## 📜 Usage
-The scraper scans the following documentation sources:
-- [Segment Docs](https://segment.com/docs/)
-- [mParticle Docs](https://docs.mparticle.com/)
-- [Lytics Docs](https://docs.lytics.com/)
-- [Zeotap Docs](https://docs.zeotap.com/home/en-us/)
-
-If no direct match is found, it suggests a Google search link for further results.
-
----
-
-## 📂 Project Structure
-```
-java-web-scraper
-│── src
-│   ├── main
-│   │   ├── java
-│   │   │   ├── com.example.util
-│   │   │   │   ├── WebScraper.java
-│   │   │   │   ├── Main.java
-│── pom.xml
-│── README.md
-```
-
----
-
-## 🎯 Expected Output
-```
-✅ Found relevant info: https://docs.mparticle.com/
-✅ Found relevant info: https://docs.lytics.com/
-
-🔍 No direct match found. Try searching here: https://www.google.com/search?q=site:segment.com/docs OR site:docs.mparticle.com OR site:docs.lytics.com OR site:docs.zeotap.com identity resolution
-```
-
----
-
-
-
-## 📌 Future Enhancements
-🚀 **Better Parsing:** Extract structured data from pages  
-🚀 **Error Handling:** Improve handling for blocked sites  
-🚀 **Web Interface:** Convert this into a simple web-based tool  
-
----
-
-## 📞 Support
-For issues or suggestions, open an **issue** on the repository.
-
-Let me know if you need any modifications! 🚀
-
+📧 Email: sakthipriyatanjore@gmail.com.com
+🌐 GitHub: sakthipriya-sp
