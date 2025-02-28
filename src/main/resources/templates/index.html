@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDP Chatbot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        #chat-container {
+            width: 40%;
+            margin: auto;
+            background: white;
+            padding: 15px;
+            box-shadow: 0px 0px 10px gray;
+            border-radius: 10px;
+            margin-top: 50px;
+        }
+        #chat-box {
+            height: 300px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .message {
+            margin: 10px 0;
+            padding: 8px;
+            border-radius: 5px;
+        }
+        .user {
+            background-color: #007bff;
+            color: white;
+            text-align: right;
+        }
+        .bot {
+            background-color: #eee;
+            text-align: left;
+        }
+        input, button {
+            width: 80%;
+            padding: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="chat-container">
+        <h2>CDP Chatbot</h2>
+        <div id="chat-box"></div>
+        <input type="text" id="user-input" placeholder="Ask a question...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            let userInput = document.getElementById("user-input").value;
+            if (userInput.trim() === "") return;
+
+            let chatBox = document.getElementById("chat-box");
+
+            // Add user message
+            let userMessage = document.createElement("div");
+            userMessage.classList.add("message", "user");
+            userMessage.textContent = userInput;
+            chatBox.appendChild(userMessage);
+
+            // Send request to backend
+            fetch("/ask", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: "question=" + encodeURIComponent(userInput)
+            })
+            .then(response => response.text())
+            .then(answer => {
+                let botMessage = document.createElement("div");
+                botMessage.classList.add("message", "bot");
+                botMessage.textContent = answer;
+                chatBox.appendChild(botMessage);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            });
+
+            // Clear input field
+            document.getElementById("user-input").value = "";
+        }
+    </script>
+</body>
+</html>
